@@ -17,6 +17,11 @@ h1{
 div{
     margin: 10px 0;
 }
+#locations,#score,#help {
+    background-color: aquamarine;
+
+}
+
 .container{
     width: 100%;
     display: flex;
