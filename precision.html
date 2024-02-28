@@ -30,28 +30,32 @@
   
   <script> 
     let stopTime = undefined
+    let countdownDuration = 0;
+
     function recordTime() {
-      stopTime = Date.now()
-      console.log(stopTime)
+      stopTime = Date.now();
+      console.log(stopTime);
     }
 
     function startTime() {
-      for (let i=0; i<4; i++) {
+      // Randomly choose a starting value for the countdown between 2 and 10
+      countdownDuration = Math.floor(Math.random() * 9) + 2;
+
+      for (let i = countdownDuration; i >= 0; i--) {
         setTimeout(function() {
-          document.getElementById("counter").innerHTML = i
-        } , (1000 * (4 - i)))
+          document.getElementById("counter").innerHTML = i;
+        }, (1000 * (countdownDuration - i)));
       }
+
       setTimeout(function() {
         if (stopTime == undefined) {
-          document.getElementById("target").innerHTML = "Too Slow"
+          document.getElementById("target").innerHTML = "Too Slow";
+        } else {
+          let endTime = Date.now();
+          let difference = endTime - stopTime;
+          document.getElementById("target").innerHTML = "Time was " + difference;
         }
-        else {
-          let endTime = Date.now()
-          let difference = endTime - stopTime
-          document.getElementById("target").innerHTML = "Time was " + difference
-
-        }
-      } , 4000)
+      }, (countdownDuration * 1000));
     }
   </script>
 

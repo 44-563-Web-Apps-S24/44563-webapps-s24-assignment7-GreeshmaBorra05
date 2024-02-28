@@ -1,75 +1,93 @@
 <!DOCTYPE html>
-<html> <head> <style>
+<html>
+<head>
+  <style>
     .flex-container {
-      display: flex;  flex-direction:row;
+      display: flex;
+      flex-direction: row;
       background-color: aqua;
-  }
+    }
 
-.flex-container > div {  /*div children of the flex container*/
-  background-color: #f1f1f1; 
-  margin: 10px;  padding: 20px;  font-size: 30px;
-}
+    .flex-container > div {
+      background-color: #f1f1f1;
+      margin: 10px;
+      padding: 20px;
+      font-size: 30px;
+    }
 
-/* Responsive layout */
-@media (max-width: 600px) { 
-	 .flex-container{
-		 flex-direction:column;
-		 background-color: green;
-	  }
-	}
-</style>
-<title>List of Divs</title>
+    /* Responsive layout */
+    @media (max-width: 600px) {
+      .flex-container {
+        flex-direction: column;
+        background-color: green;
+      }
+    }
+  </style>
+  <title>List of Divs</title>
 </head>
-
-
-
 <body>
-	<h2>Greeshma Borra builds list with divs</h2>
-		<div class="flex-container" id="target">
-		  <div class="divlist">row item 1</div>   
-		  <div class="divlist">row item 2</div>  
-		  <div class="divlist">row item 3</div>  
-		</div>
-	
-	<p> Press the button to create an new element of type div and then add it to the container.
-		</p>
-		<input type="text" name="in" id="in">
-		<button onclick="makeNewDiv()">Add end</button>
-		<button onclick="addFront()">Add front</button>
-		<button onclick="remove()">Remove</button>
-	
-	
+  <h2>Greeshma Borra builds list with divs</h2>
+  <div class="flex-container" id="target">
+    <div class="divlist">row item 1</div>
+    <div class="divlist">row item 2</div>
+    <div class="divlist">row item 3</div>
+  </div>
+
+  <p> Press the button to create a new element of type div and then add it to the container.
+  </p>
+  <input type="text" name="in" id="in">
+  <button onclick="makeNewDiv()">Add end</button>
+  <button onclick="addFront()">Add front</button>
+  <button onclick="remove()">Remove</button>
+  <button onclick="swap()">Swap</button>
 </body>
 <script>
-	function makeNewDiv() {
-		/* make the div and its text */
-		let element = document.createElement("div")
-		element.innerHTML = document.getElementById("in").value
-		element.style.className = "divlist"
-		element.style.color = "orange"
+  function makeNewDiv() {
+    /* make the div and its text */
+    let element = document.createElement("div");
+    element.innerHTML = document.getElementById("in").value;
+    element.className = "divlist"; // Fix: set className property directly
+    element.style.color = "orange";
 
-		/* add it to the container */
-		let container = document.getElementById('target')
-		container.appendChild(element)
-		
-	}
+    /* add it to the container */
+    let container = document.getElementById('target');
+    container.appendChild(element);
+  }
 
-	function remove() {
-		let divListItems = document.getElementsByClassName("divlist")
-		if (divListItems.length > 0) {
-			divListItems[Math.floor(divListItems.length / 2)].remove()
-		}
-	}
+  function remove() {
+    let divListItems = document.getElementsByClassName("divlist");
+    if (divListItems.length > 0) {
+      divListItems[Math.floor(divListItems.length / 2)].remove();
+    }
+  }
 
-	function addFront() {
-		let element = document.createElement("div")
-		element.innerHTML = document.getElementById("in").value
-		element.style.className = "divlist"
-		element.style.color = "orange"
+  function addFront() {
+    let element = document.createElement("div");
+    element.innerHTML = document.getElementById("in").value;
+    element.className = "divlist"; // Fix: set className property directly
+    element.style.color = "orange";
 
-		/* add it to the container */
-		let container = document.getElementById('target')
-		container.insertBefore(element, container.firstChild)
-	}
+    /* add it to the container */
+    let container = document.getElementById('target');
+    container.insertBefore(element, container.firstChild);
+  }
+
+  function swap() {
+    let divListItems = document.getElementsByClassName("divlist");
+
+    if (divListItems.length >= 2) {
+      let index1 = Math.floor(Math.random() * divListItems.length);
+      let index2 = Math.floor(Math.random() * divListItems.length);
+
+      // Ensure index1 and index2 are different
+      while (index1 === index2) {
+        index2 = Math.floor(Math.random() * divListItems.length);
+      }
+
+      let temp = divListItems[index1].innerHTML;
+      divListItems[index1].innerHTML = divListItems[index2].innerHTML;
+      divListItems[index2].innerHTML = temp;
+    }
+  }
 </script>
-</html>	
+</html>
