@@ -53,6 +53,12 @@
     let container = document.getElementById('target');
     container.appendChild(element);
   }
+  function remove() {
+    let divListItems = document.getElementsByClassName("divlist");
+    if (divListItems.length > 0) {
+      divListItems[Math.floor(divListItems.length / 2)].remove();
+    }
+  }
 
 
   function addFront() {
