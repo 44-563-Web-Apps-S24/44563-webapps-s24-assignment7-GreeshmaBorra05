@@ -84,11 +84,11 @@
     let monsterLocation = 0;
     let gameOver = false;
 
-    // Function to initialize monster and fancy coin locations randomly
+    
     function initializeLocations() {
-        monsterLocation = Math.floor(Math.random() * 35); // Generating random value for monster location (0-34)
+        monsterLocation = Math.floor(Math.random() * 35); 
         fancyCoinLocations = [];
-        while (fancyCoinLocations.length < 6) { // Generating 6 unique random values for fancy coin locations
+        while (fancyCoinLocations.length < 6) { 
             let location = Math.floor(Math.random() * 35);
             if (location !== monsterLocation && !fancyCoinLocations.includes(location)) {
                 fancyCoinLocations.push(location);
@@ -96,22 +96,7 @@
         }
     }
 
-    function newGame() {
-        // Reset variables and initialize new locations
-        score = 0;
-        locations = 0;
-        lastLocation = 0;
-        gameOver = false;
-        initializeLocations(); // Call to initialize locations
-
-        // Reset HTML elements
-        document.getElementById("locations").innerHTML = "Number of locations checked is " + locations;
-        document.getElementById("score").innerHTML = "Score is " + score;
-        document.getElementById("help").innerHTML = "Help report";
-        for (let i = 0; i < ids.length; i++) {
-            document.getElementById(ids[i]).src = "building.jpg";
-        }
-    }
+    
 
     function check(position) {
         if (!gameOver) {
@@ -149,6 +134,22 @@
             return "All clear";
         }
     }
+    function newGame() {
+       
+       score = 0;
+       locations = 0;
+       lastLocation = 0;
+       gameOver = false;
+       initializeLocations(); 
+
+     
+       document.getElementById("locations").innerHTML = "Number of locations checked is " + locations;
+       document.getElementById("score").innerHTML = "Score is " + score;
+       document.getElementById("help").innerHTML = "Help report";
+       for (let i = 0; i < ids.length; i++) {
+           document.getElementById(ids[i]).src = "building.jpg";
+       }
+   }
   </script>
 </body>
 </html>

@@ -9,7 +9,7 @@
     }
 
     .flex-container > div {
-      background-color: #f1f1f1;
+      background-color: #eccbcb;
       margin: 10px;
       padding: 20px;
       font-size: 30px;
@@ -19,7 +19,7 @@
     @media (max-width: 600px) {
       .flex-container {
         flex-direction: column;
-        background-color: green;
+        background-color: rgb(93, 217, 234);
       }
     }
   </style>
@@ -43,13 +43,13 @@
 </body>
 <script>
   function makeNewDiv() {
-    /* make the div and its text */
+   
     let element = document.createElement("div");
     element.innerHTML = document.getElementById("in").value;
-    element.className = "divlist"; // Fix: set className property directly
+    element.className = "divlist";
     element.style.color = "orange";
 
-    /* add it to the container */
+   
     let container = document.getElementById('target');
     container.appendChild(element);
   }
@@ -64,29 +64,29 @@
   function addFront() {
     let element = document.createElement("div");
     element.innerHTML = document.getElementById("in").value;
-    element.className = "divlist"; // Fix: set className property directly
+    element.className = "divlist"; 
     element.style.color = "orange";
 
-    /* add it to the container */
+  
     let container = document.getElementById('target');
     container.insertBefore(element, container.firstChild);
   }
 
   function swap() {
-    let divListItems = document.getElementsByClassName("divlist");
+    let divlstitms = document.getElementsByClassName("divlist");
 
-    if (divListItems.length >= 2) {
-      let index1 = Math.floor(Math.random() * divListItems.length);
-      let index2 = Math.floor(Math.random() * divListItems.length);
+    if (divlstitms.length >= 2) {
+      let idx1 = Math.floor(Math.random() * divlstitms.length);
+      let idx2 = Math.floor(Math.random() * divlstitms.length);
 
-      // Ensure index1 and index2 are different
-      while (index1 === index2) {
-        index2 = Math.floor(Math.random() * divListItems.length);
+      
+      while (idx1 === idx2) {
+        idx2 = Math.floor(Math.random() * divlstitms.length);
       }
 
-      let temp = divListItems[index1].innerHTML;
-      divListItems[index1].innerHTML = divListItems[index2].innerHTML;
-      divListItems[index2].innerHTML = temp;
+      let temp = divlstitms[idx1].innerHTML;
+      divlstitms[idx1].innerHTML = divlstitms[idx2].innerHTML;
+      divlstitms[idx2].innerHTML = temp;
     }
   }
 </script>
