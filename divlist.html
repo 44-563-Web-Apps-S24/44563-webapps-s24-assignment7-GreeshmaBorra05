@@ -71,6 +71,22 @@
     let container = document.getElementById('target');
     container.insertBefore(element, container.firstChild);
   }
+  function swap() {
+    let divlstitms = document.getElementsByClassName("divlist");
 
+    if (divlstitms.length >= 2) {
+      let idx1 = Math.floor(Math.random() * divlstitms.length);
+      let idx2 = Math.floor(Math.random() * divlstitms.length);
+
+      
+      while (idx1 === idx2) {
+        idx2 = Math.floor(Math.random() * divlstitms.length);
+      }
+
+      let temp = divlstitms[idx1].innerHTML;
+      divlstitms[idx1].innerHTML = divlstitms[idx2].innerHTML;
+      divlstitms[idx2].innerHTML = temp;
+    }
+  }
 </script>
 </html>
